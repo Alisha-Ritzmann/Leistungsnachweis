@@ -1,0 +1,39 @@
+/* Atma – Regular */
+@font-face {
+  font-family: "Atma";
+  src: url("../fonts/Atma-Regular.woff2") format("woff2"),
+       url("../fonts/Atma-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Atma – Bold */
+@font-face {
+  font-family: "Atma";
+  src: url("../fonts/Atma-Bold.woff2") format("woff2"),
+       url("../fonts/Atma-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Asap – Black */
+@font-face {
+  font-family: "Asap";
+  src: url("../fonts/Asap-Black.woff2") format("woff2"),
+       url("../fonts/Asap-Black.woff") format("woff");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Asap – Regular */
+@font-face {
+  font-family: "Asap";
+  src: url("../fonts/Asap-Regular.woff2") format("woff2"),
+       url("../fonts/Asap-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}

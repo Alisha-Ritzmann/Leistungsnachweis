@@ -1,25 +1,167 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cocktail API</title>
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reussbädli</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-    <header>
-        <h1>Vorlage für interaktive Medien II</h1>
 
+<body>
+  <div class="page">
+
+    <!-- Hintergrund -->
+    <div class="wave-background">
+
+      <!-- Wellen -->
+      <svg class="wave small wave-1" viewBox="0 0 160 40">
+        <path d="M5 25 C35 0, 55 45, 90 20 S130 20, 155 5"/>
+      </svg>
+
+      <svg class="wave medium wave-2" viewBox="0 0 190 45">
+        <path d="M5 30 C50 0, 85 50, 125 25 S165 25, 185 8"/>
+      </svg>
+
+      <svg class="wave small wave-3" viewBox="0 0 160 40">
+        <path d="M5 25 C35 0, 55 45, 90 20 S130 20, 155 5"/>
+      </svg>
+
+      <svg class="wave small wave-4" viewBox="0 0 160 40">
+        <path d="M5 25 C35 0, 55 45, 90 20 S130 20, 155 5"/>
+      </svg>
+
+      <svg class="wave medium wave-5" viewBox="0 0 190 45">
+        <path d="M5 30 C50 0, 85 50, 125 25 S165 25, 185 8"/>
+      </svg>
+
+      <svg class="wave small wave-6" viewBox="0 0 160 40">
+        <path d="M5 25 C35 0, 55 45, 90 20 S130 20, 155 5"/>
+      </svg>
+
+      <svg class="wave medium wave-7" viewBox="0 0 190 45">
+        <path d="M5 30 C50 0, 85 50, 125 25 S165 25, 185 8"/>
+      </svg>
+
+      <svg class="wave small wave-8" viewBox="0 0 160 40">
+        <path d="M5 25 C35 0, 55 45, 90 20 S130 20, 155 5"/>
+      </svg>
+
+      <!-- Bilder -->
+      <img class="bild sup sup-1" src="img/Sup.png" alt="" aria-hidden="true">
+      <img class="bild sup sup-2" src="img/Sup.png" alt="" aria-hidden="true">
+
+      <img class="bild ring ring-1" src="img/Schwimmring.png" alt="" aria-hidden="true">
+      <img class="bild ring ring-2" src="img/Schwimmring.png" alt="" aria-hidden="true">
+
+    </div>
+
+    <!-- Header -->
+    <header>
+      <p id="messzeit" class="messzeit">Stand der Messung: Lädt...</p>
+      <h1>Reussbädli</h1>
+      <h2>Gebenstorf</h2>
     </header>
+
     <main>
-        <h2>Main Content</h2>
-        <p>This is the main content of the page.</p>
+
+      <!-- Werte-Grafik -->
+      <section class="werte-grafik">
+
+        <!-- Flusslinie -->
+        <svg class="fluss-linie" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 118 1126">
+          <path d="M25.8486 0.368225C-20.9514 185.168 6.34861 319.368 51.8486 410.368C97.3486 501.368 138.749 600.968 102.349 741.368C65.9486 881.768 9.84861 924.868 51.8486 1124.87"/>
+        </svg>
+
+        <!-- Punkte -->
+        <button class="punkt punkt-1" data-box="box-temperatur" aria-label="Temperatur anzeigen"></button>
+        <button class="punkt punkt-2" data-box="box-wassertemperatur" aria-label="Wassertemperatur anzeigen"></button>
+        <button class="punkt punkt-3" data-box="box-wasserabfluss" aria-label="Wasserabfluss anzeigen"></button>
+
+        <!-- Werte -->
+        <div class="wert temperatur">
+          <h3>Temperatur</h3>
+          <p id="lufttemperatur">Lädt...</p>
+        </div>
+
+        <div class="wert wassertemperatur">
+          <h3>Wassertemperatur</h3>
+          <p id="wassertemperatur">Lädt...</p>
+        </div>
+
+        <div class="wert wasserabfluss">
+          <h3>Wasserabfluss</h3>
+          <p id="wasserabfluss">Lädt...</p>
+        </div>
+
+        <!-- Info-Boxen -->
+        <article class="info-box" id="box-temperatur">
+          <button class="close-box" aria-label="Infobox schliessen">×</button>
+          <h4 id="box-lufttemperatur">-- °C</h4>
+          <p>Temperaturen zwischen 25°C und 30°C werden als angenehm zum Schwimmen empfunden.</p>
+        </article>
+
+        <article class="info-box" id="box-wassertemperatur">
+          <button class="close-box" aria-label="Infobox schliessen">×</button>
+          <h4 id="box-wassertemperatur-wert">-- °C</h4>
+          <p>Wassertemperaturen zwischen 20°C und 23°C werden als angenehm zum Schwimmen empfunden.</p>
+        </article>
+
+        <article class="info-box" id="box-wasserabfluss">
+          <button class="close-box" aria-label="Infobox schliessen">×</button>
+          <h4 id="box-wasserabfluss-wert">-- m³/s</h4>
+          <p>Aufgrund der hohen Strömung sind Abflussmengen über 270m³/s gefährlich.</p>
+        </article>
+
+      </section>
+
+      <!-- Schwimmtypen -->
+      <section class="schwimmtyp-section">
+        <p class="intro-text">Finde heraus, ob die Temperaturen geeignet für dich sind</p>
+        <h2 class="schwimmtyp-title">Welcher Schwimmtyp bist du?</h2>
+
+        <div class="schwimmtyp-grid">
+
+          <article class="schwimmtyp-card" data-type="kalt" tabindex="0">
+            <img src="img/Eiswuerfel.png" alt="Kaltwasser">
+            <h3>Kaltwasser</h3>
+            <p class="result-text">
+              Die Temperaturen sind heute perfekt für dich zum Schwimmen geeignet.
+            </p>
+          </article>
+
+          <article class="schwimmtyp-card" data-type="erfrischung" tabindex="0">
+            <img src="img/Welle.png" alt="Erfrischung">
+            <h3>Erfrischung</h3>
+            <p class="result-text">
+              Die Temperaturen sind heute perfekt für dich zum Schwimmen geeignet.
+            </p>
+          </article>
+
+          <article class="schwimmtyp-card" data-type="warm" tabindex="0">
+            <div class="bild-wrapper">
+              <img class="bild-normal" src="img/Sonne.png" alt="Warmwasser">
+              <img class="bild-aktiv" src="img/Sonne_weiss.png" alt="Warmwasser Resultat">
+            </div>
+
+            <h3>Warmwasser</h3>
+
+            <p class="result-text">
+              Das Wasser ist heute etwas kalt für dich.
+            </p>
+          </article>
+
+        </div>
+      </section>
 
     </main>
-    <footer>
-        <p>This is the footer of the page.</p>
 
+    <!-- Footer -->
+    <footer>
+      <p>Interaktive Medien 2</p>
     </footer>
-    <script src="js/script.js" type="module"></script>
+
+  </div>
+
+  <script src="js/script.js" type="module"></script>
 </body>
 </html>
