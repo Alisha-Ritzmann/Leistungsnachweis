@@ -569,6 +569,41 @@ footer p {
   }
 }
 
+/* Temperaturentwicklung */
+
+.historie-section {
+  text-align: center;
+  padding: 0 20px 80px;
+}
+
+.historie-button {
+  padding: 18px 36px;
+  border: none;
+  border-radius: 12px;
+  background-color: var(--dunkelblau);
+  color: white;
+  font: 400 1.3rem "Asap", sans-serif;
+  cursor: pointer;
+
+  transition:
+    background-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.historie-button:hover {
+  background-color: var(--mittelblau);
+  transform: scale(1.08);
+}
+
+#historie-container {
+  margin-top: 30px;
+  font: 400 1.4rem "Asap", sans-serif;
+}
+
+.historie-titel {
+  margin-bottom: 25px;
+}
+
 /*Tablet*/
 
 @media (min-width: 901px) and (max-width: 1200px) {

@@ -27,6 +27,37 @@ async function loadWeatherData() {
   }
 }
 
+// Data Wetter History
+async function loadTemperatureHistory() {
+  const latitude = 47.48;
+  const longitude = 8.29;
+
+  const heute = new Date();
+  const vor7Tagen = new Date();
+
+  vor7Tagen.setDate(heute.getDate() - 6);
+
+  const endDate = heute.toISOString().split("T")[0];
+  const startDate = vor7Tagen.toISOString().split("T")[0];
+
+  const url =
+    `https://archive-api.open-meteo.com/v1/archive?` +
+    `latitude=${latitude}` +
+    `&longitude=${longitude}` +
+    `&start_date=${startDate}` +
+    `&end_date=${endDate}` +
+    `&daily=temperature_2m_max` +
+    `&timezone=auto`;
+
+  try {
+    const response = await fetch(url);
+    return await response.json();
+  } catch (error) {
+    console.error("Historie API Fehler:", error);
+    return false;
+  }
+}
+
 // Zeitpunkt der Messung
 function updateMesszeit(hydroData) {
   const messzeitElement = document.querySelector("#messzeit");
@@ -176,6 +207,43 @@ function setupSchwimmtypCards() {
   });
 }
 
+function setupHistorieButton() {
+  const button = document.querySelector("#historie-button");
+
+  if (!button) return;
+
+  button.addEventListener("click", async () => {
+    const data = await loadTemperatureHistory();
+
+    if (!data) return;
+
+    const container = document.querySelector("#historie-container");
+
+    let html = `
+      <h3 class="historie-titel">
+        Temperaturentwicklung der letzten 7 Tage
+      </h3>
+`;
+
+    data.daily.time.forEach((datum, index) => {
+  const date = new Date(datum);
+
+  const formatiertesDatum =
+    `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`;
+
+  html += `
+    <p>
+      ${formatiertesDatum}: 
+      ${data.daily.temperature_2m_max[index].toFixed(1)} °C
+    </p>
+  `;
+});
+
+    container.innerHTML = html;
+  });
+}
+
 showData();
 setupInfoBoxen();
 setupSchwimmtypCards();
+setupHistorieButton();
