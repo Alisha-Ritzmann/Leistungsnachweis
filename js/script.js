@@ -27,6 +27,7 @@ async function loadWeatherData() {
   }
 }
 
+// Zeitpunkt der Messung
 function updateMesszeit(hydroData) {
   const messzeitElement = document.querySelector("#messzeit");
 
@@ -45,6 +46,8 @@ function updateMesszeit(hydroData) {
     `Stand der Messung: ${formatiertesDatum}, ${formatierteZeit}`;
 }
 
+
+// Schwimmtypen - berechnet, ob die Wassertemperatur geeignet ist
 function updateSchwimmtypen(wassertemperatur) {
   const schwimmtypCards = document.querySelectorAll(".schwimmtyp-card");
 
@@ -54,6 +57,7 @@ function updateSchwimmtypen(wassertemperatur) {
 
     if (!resultText) return;
 
+    // Kaltwasser
     if (type === "kalt") {
       if (wassertemperatur < 18) {
         resultText.textContent =
@@ -64,6 +68,7 @@ function updateSchwimmtypen(wassertemperatur) {
       }
     }
 
+    // Erfrischung
     if (type === "erfrischung") {
       if (wassertemperatur >= 18 && wassertemperatur <= 22) {
         resultText.textContent =
@@ -77,6 +82,7 @@ function updateSchwimmtypen(wassertemperatur) {
       }
     }
 
+    // Warmwasser
     if (type === "warm") {
       if (wassertemperatur > 22) {
         resultText.textContent =
@@ -93,6 +99,7 @@ async function showData() {
   const hydroData = await loadHydroData();
   const weatherData = await loadWeatherData();
 
+  // Temperatur wird angezeigt
   if (weatherData) {
     const lufttemperatur = weatherData.current.temperature_2m;
 
@@ -103,6 +110,7 @@ async function showData() {
       `${lufttemperatur.toFixed(1)} °C`;
   }
 
+  // Wassertemperatur und Wasserablfuss angezeigt
   if (hydroData) {
     const wassertemperatur = hydroData.payload.find(item => item.par === "temperature");
     const wasserabfluss = hydroData.payload.find(item => item.par === "flow");

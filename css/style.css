@@ -289,6 +289,10 @@ body:has(#box-wasserabfluss.aktiv) .punkt-3 {
   left: calc(50% + 130px);
 }
 
+.titel-wassertemperatur span {
+  display: inline;
+}
+
 .wasserabfluss {
   top: 840px;
   left: calc(50% - 360px);
@@ -707,6 +711,18 @@ footer p {
 
   .wassertemperatur {
     left: calc(50% + 13px + 46px + 10px);
+  }
+
+  .titel-wassertemperatur span {
+    display: block;
+  }
+
+  .titel-wassertemperatur {
+    line-height: 1.1;
+  }
+
+  .schwimmtyp-section {
+    padding-top: 100px;
   }
 
   .wasserabfluss {
